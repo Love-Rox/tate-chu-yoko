@@ -1,5 +1,11 @@
 # @love-rox/tcy-core
 
+## 0.1.1
+
+### Patch Changes
+
+- 69e239e: Declare `sideEffects: false` so bundlers can tree-shake unused exports.
+
 ## 0.1.0
 
 ### Minor Changes
