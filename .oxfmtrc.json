@@ -4,5 +4,5 @@
   "semi": true,
   "trailingComma": "all",
   "printWidth": 100,
-  "ignorePatterns": ["**/dist/**", "**/node_modules/**"]
+  "ignorePatterns": ["**/dist/**", "**/node_modules/**", "**/CHANGELOG.md"]
 }
