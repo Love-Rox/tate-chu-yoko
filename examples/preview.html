@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>tt-chu-yk preview</title>
+    <style>
+      body {
+        font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+        background: #faf8f3;
+        padding: 40px;
+      }
+      .vertical {
+        writing-mode: vertical-rl;
+        height: 360px;
+        line-height: 2;
+        font-size: 20px;
+        border: 1px solid #ccc;
+        padding: 16px;
+        background: #fff;
+      }
+      .tcy {
+        -webkit-text-combine: horizontal;
+        text-combine-upright: all;
+      }
+      h2 {
+        font-size: 14px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>tt-chu-yk プレビュー</h1>
+
+    <h2>① 生のHTML（何も加工していない）</h2>
+    <div class="vertical">
+      第1章 2026年4月、Webの縦書きは進化した。ABC社のレポートによれば、利用者は10倍に増えた。
+    </div>
+
+    <h2>② ライブラリ適用後の想定HTML（connect: true、英数字のみ）</h2>
+    <div class="vertical">
+      第<span class="tcy">1</span>章 <span class="tcy">2026</span>年<span class="tcy">4</span
+      >月、Webの縦書きは進化した。<span class="tcy">ABC</span>社のレポートによれば、利用者は<span
+        class="tcy"
+        >10</span
+      >倍に増えた。
+    </div>
+
+    <h2>③ combine: false（一文字ずつ span、個別制御向け）</h2>
+    <div class="vertical">
+      第<span class="tcy">1</span>章 <span class="tcy">2</span><span class="tcy">0</span
+      ><span class="tcy">2</span><span class="tcy">6</span>年
+    </div>
+  </body>
+</html>

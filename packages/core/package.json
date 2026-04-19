@@ -1,0 +1,32 @@
+{
+  "name": "@tt-chu-yk/core",
+  "version": "0.1.0",
+  "description": "Framework-agnostic tokenizer for Japanese tate-chu-yoko (縦中横) span wrapping",
+  "keywords": [
+    "japanese",
+    "tate-chu-yoko",
+    "text-combine-upright",
+    "vertical-writing",
+    "縦中横"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  }
+}

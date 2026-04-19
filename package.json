@@ -1,0 +1,22 @@
+{
+  "name": "tt-chu-yk",
+  "version": "0.0.0",
+  "private": true,
+  "description": "縦中横 auto-wrap libraries for Japanese vertical writing",
+  "scripts": {
+    "build": "pnpm -r --filter \"./packages/*\" run build",
+    "test": "pnpm -r --filter \"./packages/*\" run test",
+    "typecheck": "pnpm -r --filter \"./packages/*\" run typecheck",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
+  },
+  "devDependencies": {
+    "oxfmt": "^0.45.0",
+    "oxlint": "^1.60.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "packageManager": "pnpm@10.33.0"
+}

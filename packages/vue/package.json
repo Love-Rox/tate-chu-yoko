@@ -1,0 +1,43 @@
+{
+  "name": "@tt-chu-yk/vue",
+  "version": "0.1.0",
+  "description": "Vue 3 <Tcy> component for Japanese tate-chu-yoko (縦中横) auto-wrap",
+  "keywords": [
+    "japanese",
+    "tate-chu-yoko",
+    "vertical-writing",
+    "vue",
+    "縦中横"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tt-chu-yk/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^25.0.1",
+    "vue": "^3.5.12"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  }
+}

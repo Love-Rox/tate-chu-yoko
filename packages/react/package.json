@@ -1,0 +1,46 @@
+{
+  "name": "@tt-chu-yk/react",
+  "version": "0.1.0",
+  "description": "React <Tcy> component for Japanese tate-chu-yoko (縦中横) auto-wrap",
+  "keywords": [
+    "japanese",
+    "react",
+    "tate-chu-yoko",
+    "vertical-writing",
+    "縦中横"
+  ],
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tt-chu-yk/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  }
+}
