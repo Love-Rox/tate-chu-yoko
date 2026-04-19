@@ -1,0 +1,54 @@
+name: バグ報告
+description: 想定と異なる挙動や不具合の報告
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグ報告ありがとうございます。再現に必要な情報を教えてください。
+  - type: input
+    id: package
+    attributes:
+      label: 該当パッケージ
+      description: 例 `@tt-chu-yk/react` / `@tt-chu-yk/vue` / `@tt-chu-yk/core`
+      placeholder: '@tt-chu-yk/react'
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: バージョン
+      placeholder: '0.1.0'
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: 症状
+      description: 何が起きて、何が期待していた挙動か
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 再現手順
+      description: 最小の再現コードまたは StackBlitz / CodeSandbox の URL
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: 実行環境
+      description: Node.js / ブラウザ / フレームワークのバージョンなど
+      placeholder: |
+        - Node.js: 22.x
+        - React: 18.3
+        - OS: macOS 15
+    validations:
+      required: false
+  - type: textarea
+    id: extra
+    attributes:
+      label: 補足
+      description: スクリーンショット、関連する既知の Issue など

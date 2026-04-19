@@ -1,0 +1,32 @@
+name: 機能提案
+description: 新機能や API の追加・拡張の提案
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        機能提案ありがとうございます。背景とユースケースを教えてください。
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 解決したい課題
+      description: どんな場面で、どのように困っているか
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案内容
+      description: API シグネチャ案や使用例があると助かります
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 代替案
+      description: 検討した別案や既存のワークアラウンド
+  - type: textarea
+    id: extra
+    attributes:
+      label: 補足
