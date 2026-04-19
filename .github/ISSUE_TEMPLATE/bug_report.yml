@@ -10,8 +10,8 @@ body:
     id: package
     attributes:
       label: 該当パッケージ
-      description: 例 `@tt-chu-yk/react` / `@tt-chu-yk/vue` / `@tt-chu-yk/core`
-      placeholder: '@tt-chu-yk/react'
+      description: 例 `@love-rox/tcy-react` / `@love-rox/tcy-vue` / `@love-rox/tcy-core`
+      placeholder: '@love-rox/tcy-react'
     validations:
       required: true
   - type: input

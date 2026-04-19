@@ -10,9 +10,13 @@
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",
     "format": "oxfmt .",
-    "format:check": "oxfmt --check ."
+    "format:check": "oxfmt --check .",
+    "changeset": "changeset",
+    "ci:version": "changeset version",
+    "ci:publish": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
     "oxfmt": "^0.45.0",
     "oxlint": "^1.60.0",
     "typescript": "^5.6.3",

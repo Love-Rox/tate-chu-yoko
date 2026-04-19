@@ -7,7 +7,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import { tokenize, type TcyOptions } from '@tt-chu-yk/core';
+import { tokenize, type TcyOptions } from '@love-rox/tcy-core';
 
 export interface TcyProps extends TcyOptions {
   children: ReactNode;
