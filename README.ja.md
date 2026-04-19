@@ -4,9 +4,9 @@
 
 日本語縦書きの **縦中横（たてちゅうよこ）** を自動化するライブラリ群。半角英数字を自動的に `<span>` で囲み、CSS の `text-combine-upright: all` と組み合わせて縦書き組版を整えます。
 
-- **`@tt-chu-yk/core`** — フレームワーク非依存のトークナイザ
-- **`@tt-chu-yk/react`** — React 用 `<Tcy>` コンポーネント
-- **`@tt-chu-yk/vue`** — Vue 3 用 `<Tcy>` コンポーネント
+- **`@love-rox/tcy-core`** — フレームワーク非依存のトークナイザ
+- **`@love-rox/tcy-react`** — React 用 `<Tcy>` コンポーネント
+- **`@love-rox/tcy-vue`** — Vue 3 用 `<Tcy>` コンポーネント
 
 ## なぜ必要か
 
@@ -16,13 +16,13 @@
 
 ```bash
 # React
-pnpm add @tt-chu-yk/react
+pnpm add @love-rox/tcy-react
 
 # Vue
-pnpm add @tt-chu-yk/vue
+pnpm add @love-rox/tcy-vue
 
 # コアのみ（独自ラッパーを書く場合）
-pnpm add @tt-chu-yk/core
+pnpm add @love-rox/tcy-core
 ```
 
 ## CSS
@@ -41,7 +41,7 @@ pnpm add @tt-chu-yk/core
 ### React
 
 ```tsx
-import { Tcy } from '@tt-chu-yk/react';
+import { Tcy } from '@love-rox/tcy-react';
 
 export function Chapter() {
   return (
@@ -62,7 +62,7 @@ export function Chapter() {
 
 ```vue
 <script setup lang="ts">
-import { Tcy } from '@tt-chu-yk/vue';
+import { Tcy } from '@love-rox/tcy-vue';
 </script>
 
 <template>
@@ -75,7 +75,7 @@ import { Tcy } from '@tt-chu-yk/vue';
 ### Core（文字列トークナイズ）
 
 ```ts
-import { tokenize } from '@tt-chu-yk/core';
+import { tokenize } from '@love-rox/tcy-core';
 
 tokenize('第1章 2026年4月');
 // [

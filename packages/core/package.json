@@ -1,6 +1,6 @@
 {
-  "name": "@tt-chu-yk/core",
-  "version": "0.1.0",
+  "name": "@love-rox/tcy-core",
+  "version": "0.0.0",
   "description": "Framework-agnostic tokenizer for Japanese tate-chu-yoko (縦中横) span wrapping",
   "keywords": [
     "japanese",
@@ -9,7 +9,17 @@
     "vertical-writing",
     "縦中横"
   ],
+  "homepage": "https://github.com/Love-Rox/tate-chu-yoko#readme",
+  "bugs": {
+    "url": "https://github.com/Love-Rox/tate-chu-yoko/issues"
+  },
   "license": "MIT",
+  "author": "SASAGAWA Kiyoshi <dev@love-rox.cc>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Love-Rox/tate-chu-yoko.git",
+    "directory": "packages/core"
+  },
   "files": [
     "dist",
     "src"
@@ -23,6 +33,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",

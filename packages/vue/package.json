@@ -1,6 +1,6 @@
 {
-  "name": "@tt-chu-yk/vue",
-  "version": "0.1.0",
+  "name": "@love-rox/tcy-vue",
+  "version": "0.0.0",
   "description": "Vue 3 <Tcy> component for Japanese tate-chu-yoko (縦中横) auto-wrap",
   "keywords": [
     "japanese",
@@ -9,7 +9,17 @@
     "vue",
     "縦中横"
   ],
+  "homepage": "https://github.com/Love-Rox/tate-chu-yoko#readme",
+  "bugs": {
+    "url": "https://github.com/Love-Rox/tate-chu-yoko/issues"
+  },
   "license": "MIT",
+  "author": "SASAGAWA Kiyoshi <dev@love-rox.cc>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Love-Rox/tate-chu-yoko.git",
+    "directory": "packages/vue"
+  },
   "files": [
     "dist",
     "src"
@@ -24,13 +34,17 @@
       "import": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@tt-chu-yk/core": "workspace:*"
+    "@love-rox/tcy-core": "workspace:*"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.4.6",

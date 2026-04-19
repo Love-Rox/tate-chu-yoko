@@ -7,7 +7,7 @@ import {
   type VNode,
   type VNodeArrayChildren,
 } from 'vue';
-import { tokenize, type TcyOptions, type TargetPreset } from '@tt-chu-yk/core';
+import { tokenize, type TcyOptions, type TargetPreset } from '@love-rox/tcy-core';
 
 type TransformContext = {
   className: string;

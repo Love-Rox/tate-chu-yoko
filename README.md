@@ -4,9 +4,9 @@
 
 Automatic **tate-chu-yoko (縦中横)** wrapping for Japanese vertical writing. The library wraps half-width alphanumerics in `<span>` tags so that CSS `text-combine-upright: all` can compose them uprightly within vertical text.
 
-- **`@tt-chu-yk/core`** — framework-agnostic tokenizer
-- **`@tt-chu-yk/react`** — React `<Tcy>` component
-- **`@tt-chu-yk/vue`** — Vue 3 `<Tcy>` component
+- **`@love-rox/tcy-core`** — framework-agnostic tokenizer
+- **`@love-rox/tcy-react`** — React `<Tcy>` component
+- **`@love-rox/tcy-vue`** — Vue 3 `<Tcy>` component
 
 ## Why
 
@@ -16,13 +16,13 @@ To typeset half-width letters and digits cleanly in vertical Japanese text, each
 
 ```bash
 # React
-pnpm add @tt-chu-yk/react
+pnpm add @love-rox/tcy-react
 
 # Vue
-pnpm add @tt-chu-yk/vue
+pnpm add @love-rox/tcy-vue
 
 # Core only (for writing your own wrapper)
-pnpm add @tt-chu-yk/core
+pnpm add @love-rox/tcy-core
 ```
 
 ## CSS
@@ -41,7 +41,7 @@ What actually composes the tate-chu-yoko is the CSS you attach to the generated 
 ### React
 
 ```tsx
-import { Tcy } from '@tt-chu-yk/react';
+import { Tcy } from '@love-rox/tcy-react';
 
 export function Chapter() {
   return (
@@ -62,7 +62,7 @@ Rendered DOM:
 
 ```vue
 <script setup lang="ts">
-import { Tcy } from '@tt-chu-yk/vue';
+import { Tcy } from '@love-rox/tcy-vue';
 </script>
 
 <template>
@@ -75,7 +75,7 @@ import { Tcy } from '@tt-chu-yk/vue';
 ### Core (string tokenizer)
 
 ```ts
-import { tokenize } from '@tt-chu-yk/core';
+import { tokenize } from '@love-rox/tcy-core';
 
 tokenize('第1章 2026年4月');
 // [
