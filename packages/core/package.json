@@ -1,6 +1,6 @@
 {
   "name": "@love-rox/tcy-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Framework-agnostic tokenizer for Japanese tate-chu-yoko (縦中横) span wrapping",
   "keywords": [
     "japanese",
