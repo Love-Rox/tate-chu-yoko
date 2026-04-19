@@ -1,5 +1,13 @@
 # @love-rox/tcy-react
 
+## 0.1.1
+
+### Patch Changes
+
+- 69e239e: Declare `sideEffects: false` so bundlers can tree-shake unused exports.
+- Updated dependencies [69e239e]
+  - @love-rox/tcy-core@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
