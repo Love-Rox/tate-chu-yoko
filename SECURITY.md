@@ -13,8 +13,8 @@
 
 セキュリティ上の問題を見つけた場合は **公開の Issue に投稿せず**、以下の方法で非公開に連絡してください。
 
-1. **GitHub Security Advisories**: [Report a vulnerability](https://github.com/sasagar/tate-chu-yoko/security/advisories/new)（推奨）
-2. **メール**: sasagawa@kent-and-co.com
+1. **GitHub Security Advisories**: [Report a vulnerability](https://github.com/Love-Rox/tate-chu-yoko/security/advisories/new)（推奨）
+2. **メール**: dev@love-rox.cc
 
 報告には以下をなるべく含めてください:
 

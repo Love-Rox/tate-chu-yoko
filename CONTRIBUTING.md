@@ -47,7 +47,7 @@ Conventional Commits 風（`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `tes
 
 ## バグ報告 / 機能提案
 
-[Issue](https://github.com/sasagar/tate-chu-yoko/issues) からテンプレートに沿って報告してください。
+[Issue](https://github.com/Love-Rox/tate-chu-yoko/issues) からテンプレートに沿って報告してください。
 
 ## 行動規範
 
