@@ -1,5 +1,13 @@
 # @love-rox/tcy-react
 
+## 0.1.2
+
+### Patch Changes
+
+- e1a0b82: Add per-package README so the npm package pages show usage docs instead of the "No README" fallback.
+- Updated dependencies [e1a0b82]
+  - @love-rox/tcy-core@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

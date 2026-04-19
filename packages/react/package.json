@@ -1,6 +1,6 @@
 {
   "name": "@love-rox/tcy-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React <Tcy> component for Japanese tate-chu-yoko (縦中横) auto-wrap",
   "keywords": [
     "japanese",
