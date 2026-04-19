@@ -1,16 +1,18 @@
 # tt-chu-yk
 
-日本語縦書きの **縦中横（たてちゅうよこ）** を自動化するライブラリ群。半角英数字を自動的に `<span>` で囲み、CSS の `text-combine-upright: all` と組み合わせて縦書き組版を整えます。
+**English** | [日本語](README.ja.md)
 
-- **`@tt-chu-yk/core`** — フレームワーク非依存のトークナイザ
-- **`@tt-chu-yk/react`** — React 用 `<Tcy>` コンポーネント
-- **`@tt-chu-yk/vue`** — Vue 3 用 `<Tcy>` コンポーネント
+Automatic **tate-chu-yoko (縦中横)** wrapping for Japanese vertical writing. The library wraps half-width alphanumerics in `<span>` tags so that CSS `text-combine-upright: all` can compose them uprightly within vertical text.
 
-## なぜ必要か
+- **`@tt-chu-yk/core`** — framework-agnostic tokenizer
+- **`@tt-chu-yk/react`** — React `<Tcy>` component
+- **`@tt-chu-yk/vue`** — Vue 3 `<Tcy>` component
 
-縦書き HTML で半角英数字をきれいに組むには、該当箇所を逐一 `<span class="tcy">…</span>` で囲む必要があります。原稿に手を入れる運用は事故の温床になりがちで、CMS や Markdown ワークフローとも相性が悪いものです。本ライブラリはプレーンテキストを渡すだけでこの前処理を自動化します。
+## Why
 
-## インストール
+To typeset half-width letters and digits cleanly in vertical Japanese text, each run has to be wrapped in `<span class="tcy">…</span>` by hand. Doing this in source manuscripts is error-prone and hostile to CMS / Markdown workflows. This library automates that preprocessing — authors write plain text and the wrapping happens at render time.
+
+## Install
 
 ```bash
 # React
@@ -19,13 +21,13 @@ pnpm add @tt-chu-yk/react
 # Vue
 pnpm add @tt-chu-yk/vue
 
-# コアのみ（独自ラッパーを書く場合）
+# Core only (for writing your own wrapper)
 pnpm add @tt-chu-yk/core
 ```
 
 ## CSS
 
-縦中横として実際に組版されるのは `.tcy` に当てる CSS 次第です。README では以下を推奨します。
+What actually composes the tate-chu-yoko is the CSS you attach to the generated span. The recommended baseline is:
 
 ```css
 .tcy {
@@ -34,7 +36,7 @@ pnpm add @tt-chu-yk/core
 }
 ```
 
-## 使い方
+## Usage
 
 ### React
 
@@ -50,7 +52,7 @@ export function Chapter() {
 }
 ```
 
-レンダリング結果（DOM）:
+Rendered DOM:
 
 ```text
 第<span class="tcy">1</span>章 <span class="tcy">2026</span>年<span class="tcy">4</span>月、Webの縦書きは進化した。
@@ -70,7 +72,7 @@ import { Tcy } from '@tt-chu-yk/vue';
 </template>
 ```
 
-### Core（文字列トークナイズ）
+### Core (string tokenizer)
 
 ```ts
 import { tokenize } from '@tt-chu-yk/core';
@@ -87,65 +89,65 @@ tokenize('第1章 2026年4月');
 // ]
 ```
 
-## オプション
+## Options
 
-React / Vue の `<Tcy>` および `tokenize()` 共通:
+Shared by the React / Vue `<Tcy>` components and `tokenize()`:
 
-| オプション | 型                                                          | 既定値           | 内容                                                                                  |
-| ---------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------- |
-| `target`   | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | span で囲む対象。`alphanumeric` は `[0-9A-Za-z]`、`ascii` は記号込みの ASCII 可視文字 |
-| `combine`  | `boolean`                                                   | `true`           | 連続する対象文字を 1 つの span にまとめる。`false` で 1 文字ずつ個別ラップ            |
-| `include`  | `string \| string[]`                                        | `undefined`      | `target` に追加で含める文字。例: `'.'`                                                |
-| `exclude`  | `string \| string[]`                                        | `undefined`      | `target` から除外する文字。`include` より優先                                         |
+| Option    | Type                                                        | Default          | Description                                                                                                  |
+| --------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
+| `target`  | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap. `alphanumeric` matches `[0-9A-Za-z]`; `ascii` matches the full printable ASCII including marks |
+| `combine` | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. Set `false` to wrap each character individually           |
+| `include` | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets regardless of `target`                                                  |
+| `exclude` | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                                       |
 
-React / Vue コンポーネント固有:
+Component-only props (React / Vue):
 
-| プロパティ  | 型       | 既定値   | 内容                                                         |
-| ----------- | -------- | -------- | ------------------------------------------------------------ |
-| `className` | `string` | `'tcy'`  | 生成する span に付くクラス名                                 |
-| `as`        | `string` | `'span'` | ラップ要素のタグ名（React は `keyof JSX.IntrinsicElements`） |
+| Prop        | Type     | Default  | Description                                                       |
+| ----------- | -------- | -------- | ----------------------------------------------------------------- |
+| `className` | `string` | `'tcy'`  | Class applied to each generated span                              |
+| `as`        | `string` | `'span'` | Tag name used for wrapping (React: `keyof JSX.IntrinsicElements`) |
 
-## 例
+## Examples
 
 ```tsx
-// 数字のみ縦中横、英字はそのまま
+// Digits only; leave letters alone
 <Tcy target="digit">ABC 123</Tcy>
 // → ABC <span class="tcy">123</span>
 
-// 「.」も対象に追加
+// Also treat "." as a target character
 <Tcy include=".">Ver.2</Tcy>
 // → <span class="tcy">Ver.2</span>
 
-// 1 文字ずつ個別 span（個別に回転を当てたい場合など）
+// Wrap one character at a time (useful for per-glyph rotation)
 <Tcy combine={false}>ABC</Tcy>
 // → <span class="tcy">A</span><span class="tcy">B</span><span class="tcy">C</span>
 
-// ネストした要素も透過
+// Nested elements are traversed transparently
 <Tcy>
   前書き<strong>ABC123</strong>後書き
 </Tcy>
 // → 前書き<strong><span class="tcy">ABC123</span></strong>後書き
 ```
 
-## 挙動メモ
+## Behavior notes
 
-- 要素境界をまたいだ連結は行いません（`<em>12</em>34` は 2 つの span に分かれます）
-- 全角英数字（`Ａ－Ｚ` / `０－９`）は既定で対象外。既に縦書きで正立するためです
-- SSR 互換（React / Vue どちらも決定論的な出力）
+- Runs are not joined across element boundaries (`<em>12</em>34` produces two separate spans)
+- Full-width alphanumerics (`Ａ－Ｚ` / `０－９`) are not wrapped by default — they already render upright in vertical text
+- SSR-safe (both React and Vue wrappers produce deterministic output)
 
-## 開発
+## Development
 
 ```bash
 pnpm install
-pnpm build       # 全パッケージを tsc でビルド
-pnpm test        # Vitest を全ワークスペースで実行
-pnpm typecheck   # 型チェック
+pnpm build       # Build all packages with tsc
+pnpm test        # Run Vitest across every workspace
+pnpm typecheck   # Type-check
 pnpm lint        # oxlint
 pnpm format      # oxfmt
 ```
 
-Lint / format には [Oxc](https://oxc.rs)（oxlint + oxfmt）を採用しています。
+Lint and format are handled by [Oxc](https://oxc.rs) (oxlint + oxfmt).
 
-## ライセンス
+## License
 
 MIT
