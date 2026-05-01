@@ -66,6 +66,14 @@ export const Tcy = defineComponent({
       type: [String, Array] as PropType<string | string[]>,
       default: undefined,
     },
+    maxLength: {
+      type: Number as PropType<number>,
+      default: undefined,
+    },
+    excludeWords: {
+      type: Array as PropType<string[]>,
+      default: undefined,
+    },
   },
   setup(props, { slots }) {
     return () => {
@@ -77,6 +85,8 @@ export const Tcy = defineComponent({
           combine: props.combine,
           include: props.include,
           exclude: props.exclude,
+          maxLength: props.maxLength,
+          excludeWords: props.excludeWords,
         },
       };
       const children = slots.default?.() ?? [];

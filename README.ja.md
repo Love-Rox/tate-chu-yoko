@@ -99,6 +99,8 @@ React / Vue の `<Tcy>` および `tokenize()` 共通:
 | `combine`  | `boolean`                                                   | `true`           | 連続する対象文字を 1 つの span にまとめる。`false` で 1 文字ずつ個別ラップ            |
 | `include`  | `string \| string[]`                                        | `undefined`      | `target` に追加で含める文字。例: `'.'`                                                |
 | `exclude`  | `string \| string[]`                                        | `undefined`      | `target` から除外する文字。`include` より優先                                         |
+| `maxLength`    | `number`                                                    | `undefined`      | tcy セグメントの最大文字数。超過分はラップせずプレーンテキストとして扱う               |
+| `excludeWords` | `string[]`                                                  | `undefined`      | `target` に合致しても除外する単語のリスト（完全一致）                                  |
 
 React / Vue コンポーネント固有:
 
@@ -121,6 +123,14 @@ React / Vue コンポーネント固有:
 // 1 文字ずつ個別 span（個別に回転を当てたい場合など）
 <Tcy combine={false}>ABC</Tcy>
 // → <span class="tcy">A</span><span class="tcy">B</span><span class="tcy">C</span>
+
+// 2 文字以下のみラップ
+<Tcy maxLength={2}>第1章 2026年4月</Tcy>
+// → 第<span class="tcy">1</span>章 2026年<span class="tcy">4</span>月
+
+// 特定の単語を除外
+<Tcy excludeWords={['2026']}>第1章 2026年4月</Tcy>
+// → 第<span class="tcy">1</span>章 2026年<span class="tcy">4</span>月
 
 // ネストした要素も透過
 <Tcy>
