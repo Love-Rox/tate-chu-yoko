@@ -1,5 +1,16 @@
 # @love-rox/tcy-react
 
+## 0.2.0
+
+### Minor Changes
+
+- Add `maxLength` and `excludeWords` options for segment-level filtering
+
+### Patch Changes
+
+- Updated dependencies
+  - @love-rox/tcy-core@0.2.0
+
 ## 0.1.2
 
 ### Patch Changes
