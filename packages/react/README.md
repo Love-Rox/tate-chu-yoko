@@ -45,14 +45,16 @@ Rendered DOM:
 
 ## Props
 
-| Prop        | Type                                                        | Default          | Description                                                                                  |
-| ----------- | ----------------------------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------- |
-| `target`    | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap                                                                                 |
-| `combine`   | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. `false` wraps each character individually |
-| `include`   | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets                                                         |
-| `exclude`   | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                       |
-| `className` | `string`                                                    | `'tcy'`          | Class applied to each generated span                                                         |
-| `as`        | `keyof JSX.IntrinsicElements`                               | `'span'`         | Tag name used for wrapping                                                                   |
+| Prop           | Type                                                        | Default          | Description                                                                                  |
+| -------------- | ----------------------------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------- |
+| `target`       | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap                                                                                 |
+| `combine`      | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. `false` wraps each character individually |
+| `include`      | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets                                                         |
+| `exclude`      | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                       |
+| `maxLength`    | `number`                                                    | `undefined`      | Maximum length for a tcy segment. Segments longer than this are left as plain text           |
+| `excludeWords` | `string[]`                                                  | `undefined`      | Exact words to exclude from tcy wrapping                                                     |
+| `className`    | `string`                                                    | `'tcy'`          | Class applied to each generated span                                                         |
+| `as`           | `keyof JSX.IntrinsicElements`                               | `'span'`         | Tag name used for wrapping                                                                   |
 
 Nested elements are traversed transparently. Runs are not joined across element boundaries.
 

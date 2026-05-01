@@ -93,12 +93,14 @@ tokenize('第1章 2026年4月');
 
 Shared by the React / Vue `<Tcy>` components and `tokenize()`:
 
-| Option    | Type                                                        | Default          | Description                                                                                                  |
-| --------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
-| `target`  | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap. `alphanumeric` matches `[0-9A-Za-z]`; `ascii` matches the full printable ASCII including marks |
-| `combine` | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. Set `false` to wrap each character individually           |
-| `include` | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets regardless of `target`                                                  |
-| `exclude` | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                                       |
+| Option         | Type                                                        | Default          | Description                                                                                                  |
+| -------------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
+| `target`       | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap. `alphanumeric` matches `[0-9A-Za-z]`; `ascii` matches the full printable ASCII including marks |
+| `combine`      | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. Set `false` to wrap each character individually           |
+| `include`      | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets regardless of `target`                                                  |
+| `exclude`      | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                                       |
+| `maxLength`    | `number`                                                    | `undefined`      | Maximum length for a tcy segment. Segments longer than this are left as plain text                           |
+| `excludeWords` | `string[]`                                                  | `undefined`      | Exact words to exclude from tcy wrapping even when they match `target`                                       |
 
 Component-only props (React / Vue):
 
@@ -121,6 +123,14 @@ Component-only props (React / Vue):
 // Wrap one character at a time (useful for per-glyph rotation)
 <Tcy combine={false}>ABC</Tcy>
 // → <span class="tcy">A</span><span class="tcy">B</span><span class="tcy">C</span>
+
+// Limit wrapping to segments of 2 characters or fewer
+<Tcy maxLength={2}>第1章 2026年4月</Tcy>
+// → 第<span class="tcy">1</span>章 2026年<span class="tcy">4</span>月
+
+// Exclude specific words from wrapping
+<Tcy excludeWords={['2026']}>第1章 2026年4月</Tcy>
+// → 第<span class="tcy">1</span>章 2026年<span class="tcy">4</span>月
 
 // Nested elements are traversed transparently
 <Tcy>

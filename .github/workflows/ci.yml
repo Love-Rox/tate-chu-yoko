@@ -28,6 +28,8 @@ jobs:
 
       - run: pnpm build
 
+      - run: pnpm check:tsdoc
+
       - run: pnpm typecheck
 
       - run: pnpm test

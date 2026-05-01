@@ -42,12 +42,16 @@ interface TcyOptions {
   combine?: boolean; // default: true
   include?: string | string[];
   exclude?: string | string[];
+  maxLength?: number;
+  excludeWords?: string[];
 }
 ```
 
 - `target`: preset or custom `RegExp` for the characters to wrap. `alphanumeric` = `[0-9A-Za-z]`; `ascii` = full printable ASCII
 - `combine`: if `true`, consecutive target characters become one `tcy` segment; if `false`, each character becomes its own segment
 - `include` / `exclude`: per-character overrides. `exclude` wins over `include`
+- `maxLength`: maximum length for a tcy segment. Segments longer than this are demoted to plain text
+- `excludeWords`: exact words to exclude from tcy wrapping. Matched against the combined segment value
 
 ## Links
 

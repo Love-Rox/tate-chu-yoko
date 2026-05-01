@@ -1,0 +1,15 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/core/src/index.ts",
+    "packages/react/src/index.ts",
+    "packages/vue/src/index.ts"
+  ],
+  "tsconfig": "tsconfig.typedoc.json",
+  "emit": "none",
+  "validation": {
+    "notDocumented": true,
+    "invalidLink": false
+  },
+  "treatWarningsAsErrors": true
+}

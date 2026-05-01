@@ -9,9 +9,12 @@ import {
 } from 'react';
 import { tokenize, type TcyOptions } from '@love-rox/tcy-core';
 
+/** Props for the {@link Tcy} React component. Extends {@link TcyOptions} with rendering options. */
 export interface TcyProps extends TcyOptions {
   children: ReactNode;
+  /** Class applied to each generated wrapping element. @defaultValue `'tcy'` */
   className?: string;
+  /** HTML tag used for wrapping. @defaultValue `'span'` */
   as?: keyof JSX.IntrinsicElements;
 }
 
@@ -67,6 +70,10 @@ function transformNode(node: ReactNode, keyPrefix: string, opts: TransformOption
   return node;
 }
 
+/**
+ * React component that automatically wraps tcy-target characters in child text
+ * nodes with `<span>` (or a custom tag) for vertical typesetting.
+ */
 export function Tcy({
   children,
   className = 'tcy',

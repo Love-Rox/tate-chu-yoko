@@ -88,4 +88,74 @@ describe('tokenize', () => {
       { type: 'tcy', value: 'B' },
     ]);
   });
+
+  describe('maxLength', () => {
+    it('demotes tcy segments exceeding maxLength to text', () => {
+      expect(tokenize('第1章 2026年4月', { maxLength: 2 })).toEqual([
+        { type: 'text', value: '第' },
+        { type: 'tcy', value: '1' },
+        { type: 'text', value: '章 2026年' },
+        { type: 'tcy', value: '4' },
+        { type: 'text', value: '月' },
+      ]);
+    });
+
+    it('keeps tcy segments exactly at maxLength', () => {
+      expect(tokenize('AB-ABC', { maxLength: 2 })).toEqual([
+        { type: 'tcy', value: 'AB' },
+        { type: 'text', value: '-ABC' },
+      ]);
+    });
+
+    it('has no effect when all segments are within maxLength', () => {
+      expect(tokenize('A1B2', { maxLength: 10 })).toEqual([{ type: 'tcy', value: 'A1B2' }]);
+    });
+  });
+
+  describe('excludeWords', () => {
+    it('demotes exact-matching tcy segments to text', () => {
+      expect(tokenize('第1章 2026年4月', { excludeWords: ['2026'] })).toEqual([
+        { type: 'text', value: '第' },
+        { type: 'tcy', value: '1' },
+        { type: 'text', value: '章 2026年' },
+        { type: 'tcy', value: '4' },
+        { type: 'text', value: '月' },
+      ]);
+    });
+
+    it('does not demote partial matches', () => {
+      expect(tokenize('ABC', { excludeWords: ['AB'] })).toEqual([{ type: 'tcy', value: 'ABC' }]);
+    });
+
+    it('demotes multiple excluded words', () => {
+      expect(tokenize('AB-CD-EF', { excludeWords: ['AB', 'EF'] })).toEqual([
+        { type: 'text', value: 'AB-' },
+        { type: 'tcy', value: 'CD' },
+        { type: 'text', value: '-EF' },
+      ]);
+    });
+  });
+
+  describe('maxLength + excludeWords combined', () => {
+    it('demotes by either condition (OR)', () => {
+      expect(tokenize('第1章 2026年AB月', { maxLength: 2, excludeWords: ['AB'] })).toEqual([
+        { type: 'text', value: '第' },
+        { type: 'tcy', value: '1' },
+        { type: 'text', value: '章 2026年AB月' },
+      ]);
+    });
+
+    it('works with character-level exclude option', () => {
+      expect(tokenize('A1B2C', { exclude: 'B', maxLength: 1 })).toEqual([
+        { type: 'text', value: 'A1B2C' },
+      ]);
+    });
+
+    it('character-level exclude splits segments before maxLength applies', () => {
+      expect(tokenize('A-BC', { exclude: '-', maxLength: 1 })).toEqual([
+        { type: 'tcy', value: 'A' },
+        { type: 'text', value: '-BC' },
+      ]);
+    });
+  });
 });
