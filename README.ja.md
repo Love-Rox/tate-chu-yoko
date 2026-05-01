@@ -93,14 +93,14 @@ tokenize('第1章 2026年4月');
 
 React / Vue の `<Tcy>` および `tokenize()` 共通:
 
-| オプション | 型                                                          | 既定値           | 内容                                                                                  |
-| ---------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------- |
-| `target`   | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | span で囲む対象。`alphanumeric` は `[0-9A-Za-z]`、`ascii` は記号込みの ASCII 可視文字 |
-| `combine`  | `boolean`                                                   | `true`           | 連続する対象文字を 1 つの span にまとめる。`false` で 1 文字ずつ個別ラップ            |
-| `include`  | `string \| string[]`                                        | `undefined`      | `target` に追加で含める文字。例: `'.'`                                                |
-| `exclude`  | `string \| string[]`                                        | `undefined`      | `target` から除外する文字。`include` より優先                                         |
-| `maxLength`    | `number`                                                    | `undefined`      | tcy セグメントの最大文字数。超過分はラップせずプレーンテキストとして扱う               |
-| `excludeWords` | `string[]`                                                  | `undefined`      | `target` に合致しても除外する単語のリスト（完全一致）                                  |
+| オプション     | 型                                                          | 既定値           | 内容                                                                                  |
+| -------------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------- |
+| `target`       | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | span で囲む対象。`alphanumeric` は `[0-9A-Za-z]`、`ascii` は記号込みの ASCII 可視文字 |
+| `combine`      | `boolean`                                                   | `true`           | 連続する対象文字を 1 つの span にまとめる。`false` で 1 文字ずつ個別ラップ            |
+| `include`      | `string \| string[]`                                        | `undefined`      | `target` に追加で含める文字。例: `'.'`                                                |
+| `exclude`      | `string \| string[]`                                        | `undefined`      | `target` から除外する文字。`include` より優先                                         |
+| `maxLength`    | `number`                                                    | `undefined`      | tcy セグメントの最大文字数。超過分はラップせずプレーンテキストとして扱う              |
+| `excludeWords` | `string[]`                                                  | `undefined`      | `target` に合致しても除外する単語のリスト（完全一致）                                 |
 
 React / Vue コンポーネント固有:
 

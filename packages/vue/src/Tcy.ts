@@ -48,6 +48,10 @@ function transformChildren(children: unknown, ctx: TransformContext): VNodeArray
   return [];
 }
 
+/**
+ * Vue 3 component that automatically wraps tcy-target characters in child text
+ * nodes with `<span>` (or a custom tag) for vertical typesetting.
+ */
 export const Tcy = defineComponent({
   name: 'Tcy',
   props: {

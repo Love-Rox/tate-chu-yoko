@@ -93,12 +93,12 @@ tokenize('第1章 2026年4月');
 
 Shared by the React / Vue `<Tcy>` components and `tokenize()`:
 
-| Option    | Type                                                        | Default          | Description                                                                                                  |
-| --------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
-| `target`  | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap. `alphanumeric` matches `[0-9A-Za-z]`; `ascii` matches the full printable ASCII including marks |
-| `combine` | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. Set `false` to wrap each character individually           |
-| `include` | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets regardless of `target`                                                  |
-| `exclude` | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                                       |
+| Option         | Type                                                        | Default          | Description                                                                                                  |
+| -------------- | ----------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------ |
+| `target`       | `'alphanumeric' \| 'alpha' \| 'digit' \| 'ascii' \| RegExp` | `'alphanumeric'` | What to wrap. `alphanumeric` matches `[0-9A-Za-z]`; `ascii` matches the full printable ASCII including marks |
+| `combine`      | `boolean`                                                   | `true`           | Merge consecutive target characters into one span. Set `false` to wrap each character individually           |
+| `include`      | `string \| string[]`                                        | `undefined`      | Extra characters to treat as targets regardless of `target`                                                  |
+| `exclude`      | `string \| string[]`                                        | `undefined`      | Characters to exclude. Takes precedence over `include`                                                       |
 | `maxLength`    | `number`                                                    | `undefined`      | Maximum length for a tcy segment. Segments longer than this are left as plain text                           |
 | `excludeWords` | `string[]`                                                  | `undefined`      | Exact words to exclude from tcy wrapping even when they match `target`                                       |
 

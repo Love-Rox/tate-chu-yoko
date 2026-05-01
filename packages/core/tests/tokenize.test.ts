@@ -108,9 +108,7 @@ describe('tokenize', () => {
     });
 
     it('has no effect when all segments are within maxLength', () => {
-      expect(tokenize('A1B2', { maxLength: 10 })).toEqual([
-        { type: 'tcy', value: 'A1B2' },
-      ]);
+      expect(tokenize('A1B2', { maxLength: 10 })).toEqual([{ type: 'tcy', value: 'A1B2' }]);
     });
   });
 
@@ -126,9 +124,7 @@ describe('tokenize', () => {
     });
 
     it('does not demote partial matches', () => {
-      expect(tokenize('ABC', { excludeWords: ['AB'] })).toEqual([
-        { type: 'tcy', value: 'ABC' },
-      ]);
+      expect(tokenize('ABC', { excludeWords: ['AB'] })).toEqual([{ type: 'tcy', value: 'ABC' }]);
     });
 
     it('demotes multiple excluded words', () => {
