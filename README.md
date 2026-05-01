@@ -1,4 +1,4 @@
-# tt-chu-yk
+# tate-chu-yoko
 
 **English** | [日本語](README.ja.md)
 
