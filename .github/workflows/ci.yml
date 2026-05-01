@@ -26,9 +26,9 @@ jobs:
 
       - run: pnpm format:check
 
-      - run: pnpm check:tsdoc
-
       - run: pnpm build
+
+      - run: pnpm check:tsdoc
 
       - run: pnpm typecheck
 
