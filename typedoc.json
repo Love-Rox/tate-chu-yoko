@@ -3,7 +3,8 @@
   "entryPoints": [
     "packages/core/src/index.ts",
     "packages/react/src/index.ts",
-    "packages/vue/src/index.ts"
+    "packages/vue/src/index.ts",
+    "packages/rehype/src/index.ts"
   ],
   "tsconfig": "tsconfig.typedoc.json",
   "emit": "none",

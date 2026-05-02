@@ -1,0 +1,62 @@
+{
+  "name": "@love-rox/tcy-rehype",
+  "version": "0.2.0",
+  "description": "rehype plugin to wrap Japanese tate-chu-yoko (縦中横) targets in HAST text nodes",
+  "keywords": [
+    "hast",
+    "japanese",
+    "rehype",
+    "tate-chu-yoko",
+    "unified",
+    "vertical-writing",
+    "縦中横"
+  ],
+  "homepage": "https://github.com/Love-Rox/tate-chu-yoko#readme",
+  "bugs": {
+    "url": "https://github.com/Love-Rox/tate-chu-yoko/issues"
+  },
+  "license": "MIT",
+  "author": "SASAGAWA Kiyoshi <dev@love-rox.cc>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Love-Rox/tate-chu-yoko.git",
+    "directory": "packages/rehype"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@love-rox/tcy-core": "workspace:*",
+    "@types/hast": "^3.0.4",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "rehype-parse": "^9.0.1",
+    "rehype-stringify": "^10.0.1",
+    "unified": "^11.0.5"
+  },
+  "peerDependencies": {
+    "unified": ">=10"
+  }
+}
