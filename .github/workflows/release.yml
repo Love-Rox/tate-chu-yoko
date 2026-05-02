@@ -15,7 +15,19 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
+      # Mint a token from a GitHub App installation so the Release PR pushed by
+      # changesets/action is authored by the App (not GITHUB_TOKEN), letting the
+      # resulting push trigger required CI checks. App tokens auto-rotate hourly,
+      # so there is no PAT expiry to manage.
+      - id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - uses: pnpm/action-setup@v5
 
@@ -35,5 +47,5 @@ jobs:
           commit: 'chore(release): version packages'
           title: 'chore(release): version packages'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           NPM_CONFIG_PROVENANCE: 'true'
