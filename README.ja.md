@@ -7,6 +7,7 @@
 - **`@love-rox/tcy-core`** — フレームワーク非依存のトークナイザ
 - **`@love-rox/tcy-react`** — React 用 `<Tcy>` コンポーネント
 - **`@love-rox/tcy-vue`** — Vue 3 用 `<Tcy>` コンポーネント
+- **`@love-rox/tcy-rehype`** — `unified` の HAST パイプライン用 rehype プラグイン
 
 ## なぜ必要か
 
@@ -20,6 +21,9 @@ pnpm add @love-rox/tcy-react
 
 # Vue
 pnpm add @love-rox/tcy-vue
+
+# rehype（Markdown / HAST パイプライン用）
+pnpm add @love-rox/tcy-rehype
 
 # コアのみ（独自ラッパーを書く場合）
 pnpm add @love-rox/tcy-core
@@ -72,6 +76,26 @@ import { Tcy } from '@love-rox/tcy-vue';
 </template>
 ```
 
+### rehype（unified パイプライン）
+
+```ts
+import { unified } from 'unified';
+import rehypeParse from 'rehype-parse';
+import rehypeStringify from 'rehype-stringify';
+import rehypeTcy from '@love-rox/tcy-rehype';
+
+const html = String(
+  await unified()
+    .use(rehypeParse, { fragment: true })
+    .use(rehypeTcy)
+    .use(rehypeStringify)
+    .process('<p>第1章 2026年4月</p>'),
+);
+// <p>第<span class="tcy">1</span>章 <span class="tcy">2026</span>年<span class="tcy">4</span>月</p>
+```
+
+`<code>` / `<pre>` / `<script>` / `<style>` の中は既定で対象外（`skipTags` で変更可）。プラグイン固有のオプションは `tagName` / `className` / `skipTags` のみで、その他は[オプション](#オプション)と共通です。
+
 ### Core（文字列トークナイズ）
 
 ```ts
@@ -108,6 +132,14 @@ React / Vue コンポーネント固有:
 | ----------- | -------- | -------- | ------------------------------------------------------------ |
 | `className` | `string` | `'tcy'`  | 生成する span に付くクラス名                                 |
 | `as`        | `string` | `'span'` | ラップ要素のタグ名（React は `keyof JSX.IntrinsicElements`） |
+
+rehype プラグイン固有:
+
+| オプション  | 型                   | 既定値                               | 内容                                           |
+| ----------- | -------------------- | ------------------------------------ | ---------------------------------------------- |
+| `tagName`   | `string`             | `'span'`                             | ラップ要素のタグ名                             |
+| `className` | `string \| string[]` | `'tcy'`                              | 生成する要素に付くクラス名                     |
+| `skipTags`  | `string[]`           | `['code', 'pre', 'script', 'style']` | サブツリーを処理せずそのまま残すタグ名のリスト |
 
 ## 例
 
