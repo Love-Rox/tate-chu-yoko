@@ -7,6 +7,7 @@ Automatic **tate-chu-yoko (縦中横)** wrapping for Japanese vertical writing. 
 - **`@love-rox/tcy-core`** — framework-agnostic tokenizer
 - **`@love-rox/tcy-react`** — React `<Tcy>` component
 - **`@love-rox/tcy-vue`** — Vue 3 `<Tcy>` component
+- **`@love-rox/tcy-rehype`** — rehype plugin for `unified` HAST pipelines
 
 ## Why
 
@@ -20,6 +21,9 @@ pnpm add @love-rox/tcy-react
 
 # Vue
 pnpm add @love-rox/tcy-vue
+
+# rehype (Markdown / HAST pipelines)
+pnpm add @love-rox/tcy-rehype
 
 # Core only (for writing your own wrapper)
 pnpm add @love-rox/tcy-core
@@ -72,6 +76,26 @@ import { Tcy } from '@love-rox/tcy-vue';
 </template>
 ```
 
+### rehype (unified pipeline)
+
+```ts
+import { unified } from 'unified';
+import rehypeParse from 'rehype-parse';
+import rehypeStringify from 'rehype-stringify';
+import rehypeTcy from '@love-rox/tcy-rehype';
+
+const html = String(
+  await unified()
+    .use(rehypeParse, { fragment: true })
+    .use(rehypeTcy)
+    .use(rehypeStringify)
+    .process('<p>第1章 2026年4月</p>'),
+);
+// <p>第<span class="tcy">1</span>章 <span class="tcy">2026</span>年<span class="tcy">4</span>月</p>
+```
+
+Text inside `<code>`, `<pre>`, `<script>`, and `<style>` is skipped by default (configurable via `skipTags`). Plugin-only options are `tagName`, `className`, and `skipTags`; the rest of the [Options](#options) below apply identically.
+
 ### Core (string tokenizer)
 
 ```ts
@@ -108,6 +132,14 @@ Component-only props (React / Vue):
 | ----------- | -------- | -------- | ----------------------------------------------------------------- |
 | `className` | `string` | `'tcy'`  | Class applied to each generated span                              |
 | `as`        | `string` | `'span'` | Tag name used for wrapping (React: `keyof JSX.IntrinsicElements`) |
+
+Plugin-only options (rehype):
+
+| Option      | Type                 | Default                              | Description                                     |
+| ----------- | -------------------- | ------------------------------------ | ----------------------------------------------- |
+| `tagName`   | `string`             | `'span'`                             | Tag name used for wrapping                      |
+| `className` | `string \| string[]` | `'tcy'`                              | Class name(s) applied to each generated element |
+| `skipTags`  | `string[]`           | `['code', 'pre', 'script', 'style']` | Tag names whose subtrees are left untouched     |
 
 ## Examples
 
