@@ -1,6 +1,6 @@
 {
   "name": "@love-rox/tcy-rehype",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "rehype plugin to wrap Japanese tate-chu-yoko (縦中横) targets in HAST text nodes",
   "keywords": [
     "hast",
