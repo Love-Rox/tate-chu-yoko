@@ -1,6 +1,6 @@
 {
   "name": "@love-rox/tcy-vue",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Vue 3 <Tcy> component for Japanese tate-chu-yoko (縦中横) auto-wrap",
   "keywords": [
     "japanese",

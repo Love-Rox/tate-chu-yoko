@@ -1,5 +1,14 @@
 # @love-rox/tcy-core
 
+## 0.2.2
+
+### Patch Changes
+
+- c30eeb9: Sync all packages to the same version. Going forward, the four
+  publishable packages (`@love-rox/tcy-core`, `@love-rox/tcy-react`,
+  `@love-rox/tcy-vue`, `@love-rox/tcy-rehype`) are kept on a single fixed
+  version line via changesets `fixed` configuration.
+
 ## 0.2.0
 
 ### Minor Changes
