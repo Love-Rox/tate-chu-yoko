@@ -3,7 +3,13 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [
-    ["@love-rox/tcy-core", "@love-rox/tcy-react", "@love-rox/tcy-vue", "@love-rox/tcy-rehype"]
+    [
+      "@love-rox/tcy-core",
+      "@love-rox/tcy-react",
+      "@love-rox/tcy-vue",
+      "@love-rox/tcy-rehype",
+      "@love-rox/tcy-astro"
+    ]
   ],
   "linked": [],
   "access": "public",

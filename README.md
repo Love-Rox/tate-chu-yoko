@@ -8,6 +8,7 @@ Automatic **tate-chu-yoko (縦中横)** wrapping for Japanese vertical writing. 
 - **`@love-rox/tcy-react`** — React `<Tcy>` component
 - **`@love-rox/tcy-vue`** — Vue 3 `<Tcy>` component
 - **`@love-rox/tcy-rehype`** — rehype plugin for `unified` HAST pipelines
+- **`@love-rox/tcy-astro`** — Astro integration + `<Tcy>` component
 
 ## Why
 
@@ -24,6 +25,9 @@ pnpm add @love-rox/tcy-vue
 
 # rehype (Markdown / HAST pipelines)
 pnpm add @love-rox/tcy-rehype
+
+# Astro
+pnpm add @love-rox/tcy-astro
 
 # Core only (for writing your own wrapper)
 pnpm add @love-rox/tcy-core
@@ -74,6 +78,30 @@ import { Tcy } from '@love-rox/tcy-vue';
     <Tcy class-name="tcy">第1章 2026年4月、Webの縦書きは進化した。</Tcy>
   </p>
 </template>
+```
+
+### Astro
+
+```ts
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import tcy from '@love-rox/tcy-astro';
+
+export default defineConfig({
+  integrations: [tcy()],
+});
+```
+
+This auto-applies `rehype-tcy` to all `.md` and `.mdx` content. To wrap an explicit slot inside `.astro` files:
+
+```astro
+---
+import Tcy from '@love-rox/tcy-astro/Tcy.astro';
+---
+
+<p style="writing-mode: vertical-rl">
+  <Tcy>第1章 2026年4月、Webの縦書きは進化した。</Tcy>
+</p>
 ```
 
 ### rehype (unified pipeline)

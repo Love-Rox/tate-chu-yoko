@@ -6,6 +6,8 @@ Returns a `Segment[]` that splits a string into text chunks and target chunks (t
 
 - [`@love-rox/tcy-react`](https://www.npmjs.com/package/@love-rox/tcy-react) — React `<Tcy>` component
 - [`@love-rox/tcy-vue`](https://www.npmjs.com/package/@love-rox/tcy-vue) — Vue 3 `<Tcy>` component
+- [`@love-rox/tcy-rehype`](https://www.npmjs.com/package/@love-rox/tcy-rehype) — rehype plugin for HAST
+- [`@love-rox/tcy-astro`](https://www.npmjs.com/package/@love-rox/tcy-astro) — Astro integration + `<Tcy>` component
 
 ## Install
 

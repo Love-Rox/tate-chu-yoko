@@ -8,6 +8,7 @@
 - **`@love-rox/tcy-react`** — React 用 `<Tcy>` コンポーネント
 - **`@love-rox/tcy-vue`** — Vue 3 用 `<Tcy>` コンポーネント
 - **`@love-rox/tcy-rehype`** — `unified` の HAST パイプライン用 rehype プラグイン
+- **`@love-rox/tcy-astro`** — Astro 用 integration および `<Tcy>` コンポーネント
 
 ## なぜ必要か
 
@@ -24,6 +25,9 @@ pnpm add @love-rox/tcy-vue
 
 # rehype（Markdown / HAST パイプライン用）
 pnpm add @love-rox/tcy-rehype
+
+# Astro
+pnpm add @love-rox/tcy-astro
 
 # コアのみ（独自ラッパーを書く場合）
 pnpm add @love-rox/tcy-core
@@ -74,6 +78,30 @@ import { Tcy } from '@love-rox/tcy-vue';
     <Tcy class-name="tcy">第1章 2026年4月、Webの縦書きは進化した。</Tcy>
   </p>
 </template>
+```
+
+### Astro
+
+```ts
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import tcy from '@love-rox/tcy-astro';
+
+export default defineConfig({
+  integrations: [tcy()],
+});
+```
+
+これだけで `.md` / `.mdx` の本文すべてに `rehype-tcy` が適用されます。`.astro` ファイル内で明示的に囲みたい場合は次のコンポーネントを使います。
+
+```astro
+---
+import Tcy from '@love-rox/tcy-astro/Tcy.astro';
+---
+
+<p style="writing-mode: vertical-rl">
+  <Tcy>第1章 2026年4月、Webの縦書きは進化した。</Tcy>
+</p>
 ```
 
 ### rehype（unified パイプライン）
