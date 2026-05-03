@@ -40,6 +40,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Create Release PR or Publish to npm
+        id: changesets
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
@@ -49,3 +50,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           NPM_CONFIG_PROVENANCE: 'true'
+
+      # If the publish step actually shipped new versions to npm, kick the
+      # docs site so its prebuild hook (scripts/fetch-versions.ts) re-fetches
+      # the dist-tags and the new badges go live within minutes — no waiting
+      # on the weekly cron in tcy-homepage. The token is minted from the
+      # SAME release App, scoped to the tcy-homepage installation. The App
+      # needs `Actions: Write` on Love-Rox/tcy-homepage for this to succeed.
+      - name: Mint dispatch token for tcy-homepage
+        if: steps.changesets.outputs.published == 'true'
+        id: dispatch-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          owner: Love-Rox
+          repositories: tcy-homepage
+
+      - name: Trigger tcy-homepage deploy
+        if: steps.changesets.outputs.published == 'true'
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ steps.dispatch-token.outputs.token }}
+          repository: Love-Rox/tcy-homepage
+          event-type: tcy-released
+          client-payload: |
+            {"publishedPackages": ${{ toJson(steps.changesets.outputs.publishedPackages) }}}
