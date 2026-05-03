@@ -3,5 +3,11 @@
   "compilerOptions": {
     "jsx": "react-jsx"
   },
-  "include": ["packages/core/src", "packages/react/src", "packages/vue/src", "packages/rehype/src"]
+  "include": [
+    "packages/core/src",
+    "packages/react/src",
+    "packages/vue/src",
+    "packages/rehype/src",
+    "packages/astro/src"
+  ]
 }

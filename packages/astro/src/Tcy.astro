@@ -1,0 +1,9 @@
+---
+import { transformHtml, type TcyAstroOptions } from './transform.js';
+
+export type Props = TcyAstroOptions;
+
+const html = await Astro.slots.render('default');
+const out = await transformHtml(html ?? '', Astro.props);
+---
+<Fragment set:html={out} />
