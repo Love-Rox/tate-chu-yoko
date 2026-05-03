@@ -1,9 +1,9 @@
 ---
-"@love-rox/tcy-astro": patch
-"@love-rox/tcy-core": patch
-"@love-rox/tcy-react": patch
-"@love-rox/tcy-rehype": patch
-"@love-rox/tcy-vue": patch
+'@love-rox/tcy-astro': patch
+'@love-rox/tcy-core': patch
+'@love-rox/tcy-react': patch
+'@love-rox/tcy-rehype': patch
+'@love-rox/tcy-vue': patch
 ---
 
 Republish to fix broken `workspace:*` dependency specifiers in `@love-rox/tcy-astro@0.3.0`.
