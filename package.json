@@ -17,12 +17,12 @@
     "ci:publish": "pnpm build && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.31.0",
+    "@changesets/cli": "^2.31.1",
     "oxfmt": "^0.45.0",
     "oxlint": "^1.60.0",
-    "typedoc": "^0.28.19",
+    "typedoc": "^0.28.20",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.5"
+    "vitest": "^5.0.5"
   },
   "packageManager": "pnpm@12.15.0"
 }
