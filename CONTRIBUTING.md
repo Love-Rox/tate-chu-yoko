@@ -5,7 +5,7 @@ tate-chu-yoko への貢献を歓迎します。このドキュメントでは開
 ## 開発環境
 
 - Node.js 18 以降
-- pnpm 10.x
+- pnpm 12.x
 - Oxc（`oxlint` / `oxfmt`）を lint/format に使用
 
 ```bash
