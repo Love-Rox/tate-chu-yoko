@@ -4,3 +4,7 @@ packages:
 allowBuilds:
   esbuild: true
   sharp: true
+overrides:
+  # tinypool 2.1.0 は critical の脆弱性あり（GHSA-5gmw-xhrv-c9v3, GHSA-85c8-ppgw-ccpr）。
+  # oxfmt@0.45 が ^2.1.0 を求めるため、直った 2.1.2 以上に寄せる（同じメジャーの中）
+  'tinypool@^2': '^2.1.2'
