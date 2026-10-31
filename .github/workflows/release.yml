@@ -20,18 +20,18 @@ jobs:
       # resulting push trigger required CI checks. App tokens auto-rotate hourly,
       # so there is no PAT expiry to manage.
       - id: app-token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@v3.3.0
         with:
           client-id: ${{ secrets.RELEASE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
         with:
           token: ${{ steps.app-token.outputs.token }}
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6.1.0
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: 24
           cache: pnpm
@@ -41,7 +41,7 @@ jobs:
 
       - name: Create Release PR or Publish to npm
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@v1.9.0
         with:
           version: pnpm ci:version
           publish: pnpm ci:publish
@@ -60,7 +60,7 @@ jobs:
       - name: Mint dispatch token for tcy-homepage
         if: steps.changesets.outputs.published == 'true'
         id: dispatch-token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@v3.3.0
         with:
           client-id: ${{ secrets.RELEASE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
@@ -69,7 +69,7 @@ jobs:
 
       - name: Trigger tcy-homepage deploy
         if: steps.changesets.outputs.published == 'true'
-        uses: peter-evans/repository-dispatch@v3
+        uses: peter-evans/repository-dispatch@v4.0.1
         with:
           token: ${{ steps.dispatch-token.outputs.token }}
           repository: Love-Rox/tcy-homepage
